@@ -1,42 +1,57 @@
-// TypeScript interface definitions
+// TypeScript type definitions for Travel App
 
-export interface TripProfile {
+interface TripProfile {
+    id: string;
     destination: string;
-    startDate: Date;
-    endDate: Date;
-    travelers: Traveler[];
+    days: number;
+    travelStyle: string;
+    travelers: number;
+    accommodation: string;
+    interests: string[];
+    dietaryRestrictions: string;
+    budgetPerDay: number;
+    avoidances: string;
+    createdAt: Date;
 }
 
-export interface Traveler {
+interface Activity {
     name: string;
-    age: number;
+    description: string;
+    time: string;
+    cost: number;
+    type: "restaurant" | "attraction" | "activity";
+    cuisine?: string;
+    priceRange?: string;
 }
 
-export interface Activity {
-    name: string;
-    location: string;
-    startTime: Date;
-    endTime: Date;
-    description?: string;
+interface DayItinerary {
+    day: number;
+    date: string;
+    morningActivities: Activity[];
+    afternoonActivities: Activity[];
+    eveningActivities: Activity[];
+    totalCost: number;
 }
 
-export interface DayItinerary {
-    date: Date;
-    activities: Activity[];
-}
-
-export interface FullItinerary {
+interface FullItinerary {
+    id: string;
     tripProfile: TripProfile;
-    dailyPlans: DayItinerary[];
+    days: DayItinerary[];
+    totalCost: number;
+    generatedAt: Date;
 }
 
-export interface PackingItem {
-    name: string;
-    quantity: number;
-    isPacked: boolean;
+interface PackingItem {
+    id: string;
+    category: "Clothing" | "Documents" | "Tech" | "Toiletries" | "Extras";
+    item: string;
+    checked: boolean;
 }
 
-export interface TravelTips {
-    tip: string;
-    importance: "low" | "medium" | "high";
+interface TravelTips {
+    customsEtiquette: string;
+    currencyTipping: string;
+    safety: string;
+    usefulPhrases: string[];
+    emergencyContacts: string;
 }
